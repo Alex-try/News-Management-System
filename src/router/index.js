@@ -21,6 +21,10 @@ const routes = [
   {
     path:'',
     component:Layout,
+    //路由元信息
+    meta:{
+      isLogin:true,
+    },
     children:[
       {
         path:'/',
@@ -80,5 +84,6 @@ const routes = [
 const router = new VueRouter({
   routes
 })
+
 
 export default router
