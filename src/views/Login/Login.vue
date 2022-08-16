@@ -79,7 +79,8 @@ export default {
             })
             .then((res) => {
               if (res.data.status === 200) {
-                console.log(jwt(res.data.data));
+                // console.log(jwt(res.data.data));
+                console.log(res.data.data);
                 //登录成功后 1、存储登录信息 2、跳转网页 3、顶部区域显示用户信息 4、持久化
                 let obj = {
                   user: jwt(res.data.data).user_name,

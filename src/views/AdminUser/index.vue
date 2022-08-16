@@ -189,6 +189,9 @@ export default {
       background: #f7ef6a;
       border-color: #d6ce45;
     }
+    .el-table--border {
+      border-radius: 5px;
+    }
   }
 }
 </style>

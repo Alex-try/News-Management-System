@@ -30,22 +30,32 @@
     </div>
     <!-- 专题列表（包含编号，专题名，状态，编辑，删除 -->
     <div class="wrapper">
-      <el-table :data="tableData" stripe>
-        <el-table-column type="selection" width="55"> </el-table-column>
-        <el-table-column prop="topic_id" label="编号" width="220">
+      <el-table :data="tableData" stripe border>
+        <el-table-column type="selection" width="55" align="center">
         </el-table-column>
-        <el-table-column prop="topic_name" label="专题名" width="220">
+        <el-table-column
+          prop="topic_id"
+          label="编号"
+          width="220"
+          align="center"
+        >
         </el-table-column>
-        <el-table-column prop="topic_state" label="状态" width="220">
+        <el-table-column
+          prop="topic_name"
+          label="专题名"
+          width="220"
+          align="center"
+        >
         </el-table-column>
-        <el-table-column prop="operate" label="操作">
+        <el-table-column
+          prop="topic_state"
+          label="状态"
+          width="220"
+          align="center"
+        >
+        </el-table-column>
+        <el-table-column prop="operate" label="操作" align="center">
           <template slot-scope="scope">
-            <el-button
-              class="init"
-              size="mini"
-              @click="handleEdit(scope.$index, scope.row)"
-              >编辑</el-button
-            >
             <el-button
               size="mini"
               type="danger"
@@ -122,7 +132,6 @@ export default {
         this.http(0);
       }
     },
-    handleEdit() {},
     handleDelete(row) {
       this.$confirm("此操作将删除此专题，是否继续？", "提示", {
         confirmButtonText: "确定",
@@ -160,7 +169,7 @@ export default {
             message: res.data.msg,
           });
           this.http(0);
-        }else{
+        } else {
           this.$message({
             type: "info",
             message: res.data.msg,
@@ -193,6 +202,9 @@ export default {
       color: #4a653a;
       background: #f7ef6a;
       border-color: #d6ce45;
+    }
+    .el-table--border {
+      border-radius: 5px;
     }
   }
 }

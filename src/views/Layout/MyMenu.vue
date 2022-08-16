@@ -15,9 +15,9 @@
         <span slot="title">首页</span>
       </el-menu-item>
 
-      <el-menu-item index="/personalcenter">
+      <el-menu-item index="/personalinfo">
         <i class="el-icon-document"></i>
-        <span slot="title">个人中心</span>
+        <span slot="title">个人信息</span>
       </el-menu-item>
       <el-menu-item index="/adminuser">
         <i class="el-icon-setting"></i>
@@ -47,13 +47,13 @@
 
 <script>
 export default {
-  props:['isCollapse']
+  props: ["isCollapse"],
 };
 </script>
 
 <style>
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 200px;
-    min-height: 400px;
-  }
+  width: 200px;
+  min-height: 400px;
+}
 </style>
