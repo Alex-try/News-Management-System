@@ -20,6 +20,9 @@
         <el-form-item label="用户名" prop="user_name">
           <el-input type="text" v-model="ruleForm.user_name"></el-input>
         </el-form-item>
+        <!-- <el-form-item label="编号" prop="user_id">
+          <el-input type="text" v-model="ruleForm.user_id"></el-input>
+        </el-form-item> -->
         <el-form-item label="密码" prop="user_password">
           <el-input
             type="password"
@@ -27,11 +30,18 @@
             autocomplete="off"
           ></el-input>
         </el-form-item>
-        <el-form-item style="margin-left:20px;">
-          <el-button type="primary" @click="submitForm('ruleForm')" style="width:85px;"
+        <el-form-item style="margin-left: 20px">
+          <el-button
+            type="primary"
+            @click="submitForm('ruleForm')"
+            style="width: 85px"
             >登录</el-button
           >
-          <el-button  style="margin-left:30px;width:85px;" @click="resetForm('ruleForm')">重置</el-button>
+          <el-button
+            style="margin-left: 30px; width: 85px"
+            @click="resetForm('ruleForm')"
+            >重置</el-button
+          >
         </el-form-item>
       </el-form>
     </div>
@@ -45,16 +55,25 @@ export default {
   data() {
     return {
       ruleForm: {
+        // user_id: "",
         user_name: "",
         user_password: "",
         user_identity: "",
       },
       rules: {
+        // user_id: [{ required: true, message: "请输入编号", trigger: "blur" }],
         user_name: [
           { required: true, message: "请输入用户名", trigger: "blur" },
-          { min: 1, max: 10, message: "长度在 1 到 10 个字符", trigger: "blur" },
+          {
+            min: 1,
+            max: 10,
+            message: "长度在 1 到 10 个字符",
+            trigger: "blur",
+          },
         ],
-        user_identity: [{required:true, message: "请选择身份", trigger: "change" }],
+        user_identity: [
+          { required: true, message: "请选择身份", trigger: "change" },
+        ],
         user_password: [
           { required: true, message: "请输入密码", trigger: "blur" },
           { min: 3, message: "密码至少3位", trigger: "blur" },
@@ -84,7 +103,8 @@ export default {
                 //登录成功后 1、存储登录信息 2、跳转网页 3、顶部区域显示用户信息 4、持久化
                 let obj = {
                   user: jwt(res.data.data).user_name,
-                  user_identity:jwt(res.data.data).user_identity,
+                  user_id: jwt(res.data.data).user_id,
+                  user_identity: jwt(res.data.data).user_identity,
                   token: res.data.data,
                 };
                 this.setUser(obj);

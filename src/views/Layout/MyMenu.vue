@@ -37,10 +37,6 @@
           <el-menu-item index="/checknews/uncheck">未审核</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
-      <el-menu-item index="/feedback">
-        <i class="el-icon-setting"></i>
-        <span slot="title">评论管理</span>
-      </el-menu-item>
     </el-menu>
   </div>
 </template>

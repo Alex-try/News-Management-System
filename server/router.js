@@ -281,5 +281,118 @@ router.get("/getId", (req, res) => {
     }
   });
 });
+/* 获取专题 */
+router.get("/getTopics", (req, res) => {
+  let id = req.query.id || "";
+  const sql = `select * from topic where topic_id like "${id}";`;
+  sqlFun(sql, null, (result) => {
+    if (result.length > 0) {
+      res.send({
+        result,
+        status: 200,
+      });
+    } else {
+      res.send({
+        msg: "暂无数据",
+      });
+    }
+  });
+});
+/* 获取已审核表 */
+router.get("/getAudit", (req, res) => {
+  let topic_id = req.query.command;
+  if (topic_id === "a") {
+    topic_id = "%";
+  }
+  const sql = `SELECT * FROM application,audit 
+               WHERE application.application_id=audit.application_id 
+               AND application.topic_id LIKE "${topic_id}";`;
+  sqlFun(sql, null, (result) => {
+    if (result.length >= 0) {
+      res.send({
+        result,
+        status: 200,
+      });
+    } else {
+      res.send({
+        msg: "暂无数据",
+      });
+    }
+  });
+});
+/* 获取作者姓名 */
+router.get("/getAuthorName", (req, res) => {
+  let name = req.query.name || "";
+  // let topic_id = req.query.command;
+  let id = req.query.id;
+  /* if (name === "author_name") {
+    id = "author_id";
+  } else {
+    id = "admin_id";
+  }
+  if (topic_id === "a") {
+    topic_id = "%";
+  } */
+  const sql = `SELECT user_name ${name}
+               FROM user
+               WHERE user_id = ${id};`;
+  sqlFun(sql, null, (result) => {
+    if (result.length >= 0) {
+      res.send({
+        result,
+        status: 200,
+      });
+    } else {
+      res.send({
+        msg: "暂无数据",
+      });
+    }
+  });
+});
+/* 获取未审核表 */
+router.get("/getUnAudit", (req, res) => {
+  let topic_id = req.query.command;
+  if (topic_id === "a") {
+    topic_id = "%";
+  }
+  const sql = `SELECT * FROM application WHERE application.topic_id LIKE "${topic_id}" 
+                AND application.application_id NOT IN(
+                    SELECT audit.application_id FROM audit)`;
+  sqlFun(sql, null, (result) => {
+    if (result.length >= 0) {
+      res.send({
+        result,
+        status: 200,
+      });
+    } else {
+      res.send({
+        msg: "暂无数据",
+      });
+    }
+  });
+});
+/* 添加审核表记录 */
+router.get("/addAudit", (req, res) => {
+  let application_id = req.query.application_id || "";
+  let admin_id = req.query.admin_id || "";
+  let audit_result = req.query.audit_result || "";
+  let audit_time = req.query.audit_time || "";
+  let audit_info = req.query.audit_info || "";
+  let sql = `insert into audit(application_id,admin_id,audit_result,audit_time,audit_info) values(?,?,?,?,?);`;
+  let arr = [application_id, admin_id, audit_result, audit_time, audit_info];
+  sqlFun(sql, arr, (result) => {
+    if (result.affectedRows > 0) {
+      res.send({
+        status: 200,
+        msg: "添加成功",
+      });
+    } else {
+      res.send({
+        status: 500,
+        msg: "添加失败",
+      });
+    }
+  });
+});
 
 module.exports = router;

@@ -60,6 +60,26 @@ const api = {
   getId(params) {
     return axios.get(base.getId, { params });
   },
+  //获取专题号
+  getTopics(params) {
+    return axios.get(base.getTopics, { params });
+  },
+  //获取已审核新闻
+  getAudit(params) {
+    return axios.get(base.getAudit, { params });
+  },
+  //获取作者和审核人姓名
+  getAuthorName(params) {
+    return axios.get(base.getAuthorName, { params });
+  },
+  //获取未审核新闻
+  getUnAudit(params) {
+    return axios.get(base.getUnAudit, { params });
+  },
+  //添加审核表记录
+  addAudit(params) {
+    return axios.get(base.addAudit, { params });
+  },
 };
 
 export default api;

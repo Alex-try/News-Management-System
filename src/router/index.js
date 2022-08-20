@@ -9,11 +9,12 @@ const PersonalInfo = () => import("../views/PersonalInfo/index.vue");
 const AdminUser = () => import("../views/AdminUser/index.vue");
 const AdminTopic = () => import("../views/AdminTopic/index.vue");
 const CheckNews = () => import("../views/CheckNews/index.vue");
-const Feedback = () => import("../views/Feedback/index.vue");
+// const Feedback = () => import("../views/Feedback/index.vue");
 const Checked = () => import("../views/CheckNews/Checked.vue");
 const Uncheck = () => import("../views/CheckNews/Uncheck.vue");
-
 const AddUser = () => import("../views/AdminUser/AddUser.vue");
+const NewsDetail = () => import("../views/CheckNews/NewsDetail.vue");
+const ToAudit = () => import("../views/CheckNews/ToAudit.vue");
 
 Vue.use(VueRouter);
 
@@ -67,17 +68,22 @@ const routes = [
           },
         ],
       },
-      {
-        path: "/feedback",
-        name: "Feedback",
-        component: Feedback,
-      },
     ],
   },
   {
     path: "/login",
     name: "Login",
     component: Login,
+  },
+  {
+    path: "/newsdetail",
+    name: "NewsDetail",
+    component: NewsDetail,
+  },
+  {
+    path: "/toaudit",
+    name: "ToAudit",
+    component: ToAudit,
   },
 ];
 

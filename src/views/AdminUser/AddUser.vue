@@ -55,9 +55,16 @@ export default {
       rules: {
         user_name: [
           { required: true, message: "请输入用户名", trigger: "blur" },
-          { min: 1, max: 10, message: "长度在 1 到 10 个字符", trigger: "blur" },
+          {
+            min: 1,
+            max: 10,
+            message: "长度在 1 到 10 个字符",
+            trigger: "blur",
+          },
         ],
-        user_identity: [{required:true, message: "请选择身份", trigger: "change" }],
+        user_identity: [
+          { required: true, message: "请选择身份", trigger: "change" },
+        ],
         user_password: [
           { required: true, message: "请输入密码", trigger: "blur" },
           { min: 3, message: "密码至少3位", trigger: "blur" },
@@ -70,12 +77,15 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           let { user_name, user_password, user_identity } = this.userForm;
-          this.$api.addUser({
-            user_name,user_password,user_identity
-          })
-          .then((res)=>{
-            console.log(res.data)
-          })
+          this.$api
+            .addUser({
+              user_name,
+              user_password,
+              user_identity,
+            })
+            .then((res) => {
+              console.log(res.data);
+            });
           alert("添加成功!");
         } else {
           console.log("添加不符合规范!!");
@@ -104,9 +114,13 @@ export default {
   background-color: #dee3e1;
   padding: 50px 30px 20px 0; //上 右 下 左
 }
-button {
+.btn:nth-child(1) {
   color: #4a653a;
   background: #f7ef6a;
+  border-color: #d6ce45;
+}
+.btn:nth-child(2) {
+  color: #4a653a;
   border-color: #d6ce45;
 }
 </style>
