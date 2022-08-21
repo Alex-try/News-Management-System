@@ -67,7 +67,10 @@ app.use(express.urlencoded()); //用于将传入的请求对象识别为字符�
 ## 富文本编辑
 
 1、百度编译器
+
 2、wangEditor
+
+- 使用教程链接 https://www.wangeditor.com/v5/for-frame.html#%E5%AE%89%E8%A3%85
 
 ## 数据更新后页面自动刷新
 

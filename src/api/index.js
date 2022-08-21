@@ -80,6 +80,10 @@ const api = {
   addAudit(params) {
     return axios.get(base.addAudit, { params });
   },
+  //添加申请表记录
+  addApply(params) {
+    return axios.get(base.addApply, { params });
+  },
 };
 
 export default api;

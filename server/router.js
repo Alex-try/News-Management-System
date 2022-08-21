@@ -262,7 +262,7 @@ router.get("/delTopic", (req, res) => {
     }
   });
 });
-/* 获取编号 */
+/* 获取用户编号 */
 router.get("/getId", (req, res) => {
   const user_name = req.query.user_name || "";
   const user_identity = req.query.user_identity || "";
@@ -390,6 +390,35 @@ router.get("/addAudit", (req, res) => {
       res.send({
         status: 500,
         msg: "添加失败",
+      });
+    }
+  });
+});
+/* 添加申请表记录 */
+router.get("/addApply", (req, res) => {
+  let application_title = req.query.application_title || "";
+  let author_id = req.query.author_id || "";
+  let topic_id = req.query.topic_id || "";
+  let application_time = req.query.application_time || "";
+  let application_content = req.query.application_content || "";
+  let sql = `insert into application(application_title,author_id,topic_id,application_time,application_content) values(?,?,?,?,?);`;
+  let arr = [
+    application_title,
+    author_id,
+    topic_id,
+    application_time,
+    application_content,
+  ];
+  sqlFun(sql, arr, (result) => {
+    if (result.affectedRows > 0) {
+      res.send({
+        status: 200,
+        msg: "提交成功",
+      });
+    } else {
+      res.send({
+        status: 500,
+        msg: "提交失败",
       });
     }
   });

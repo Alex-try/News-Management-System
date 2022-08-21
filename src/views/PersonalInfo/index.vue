@@ -164,12 +164,12 @@ export default {
   .title {
     margin: 25px;
     padding: 10px;
-    background-color: #dee3e1;
   }
   .content {
     margin: 25px;
     text-align: center;
-    background-color: #dee3e1;
+    background-color: rgb(236, 233, 233);
+    border-radius: 8px;
     padding: 50px 30px 20px 0; //上 右 下 左
     h3 {
       margin: 10px;
