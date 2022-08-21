@@ -1,7 +1,8 @@
 <template>
   <div class="layout">
     <!-- 左侧导航栏 -->
-    <MyMenu class="menu" :isCollapse="isCollapse" />
+    <MyMenu v-show="role === 'admin'" class="menu" :isCollapse="isCollapse" />
+    <MyMenu1 v-show="role === 'author'" class="menu" :isCollapse="isCollapse" />
     <!-- 右侧内容 -->
     <Content
       class="content"
@@ -14,16 +15,19 @@
 
 <script>
 import MyMenu from "./MyMenu.vue";
+import MyMenu1 from "./MyMenu1.vue";
 import Content from "./Content.vue";
 export default {
   data() {
     return {
       isCollapse: false,
+      role: JSON.parse(window.localStorage.getItem("user")).user_identity,
     };
   },
   components: {
     MyMenu,
     Content,
+    MyMenu1,
   },
   methods: {
     changeCollapse() {

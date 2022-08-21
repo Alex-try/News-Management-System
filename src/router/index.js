@@ -15,6 +15,9 @@ const Uncheck = () => import("../views/CheckNews/Uncheck.vue");
 const AddUser = () => import("../views/AdminUser/AddUser.vue");
 const NewsDetail = () => import("../views/CheckNews/NewsDetail.vue");
 const ToAudit = () => import("../views/CheckNews/ToAudit.vue");
+const WriteNews = () => import("../views/WriteNews/index.vue");
+const Achievements = () => import("../views/Achievements/index.vue");
+const DraftBox = () => import("../views/DraftBox/index.vue");
 
 Vue.use(VueRouter);
 
@@ -25,48 +28,72 @@ const routes = [
     //路由元信息
     meta: {
       isLogin: true,
+      roles: ["admin", "author"],
     },
     children: [
       {
         path: "/",
         name: "Home",
         component: Home,
+        meta: { roles: ["admin", "author"] },
       },
       {
         path: "/personalinfo",
         name: "PersonalInfo",
         component: PersonalInfo,
+        meta: { roles: ["admin", "author"] },
       },
       {
         path: "/adminuser",
         name: "AdminUser",
         component: AdminUser,
+        meta: { roles: ["admin"] },
       },
       {
         path: "/adduser",
         name: "AddUser",
         component: AddUser,
+        meta: { roles: ["admin"] },
       },
       {
         path: "/admintopic",
         name: "AdminTopic",
         component: AdminTopic,
+        meta: { roles: ["admin"] },
       },
       {
         path: "/checknews",
         name: "CheckNews",
         component: CheckNews,
+        meta: { roles: ["admin"] },
         redirect: "/checknews/checked",
         children: [
           {
             path: "checked",
             component: Checked,
+            meta: { roles: ["admin"] },
           },
           {
             path: "uncheck",
             component: Uncheck,
+            meta: { roles: ["admin"] },
           },
         ],
+      },
+      {
+        path: "writenews",
+        component: WriteNews,
+        meta: { roles: ["author"] },
+      },
+      {
+        path: "achievements",
+        component: Achievements,
+        meta: { roles: ["author"] },
+      },
+      {
+        path: "draftbox",
+        component: DraftBox,
+        meta: { roles: ["author"] },
       },
     ],
   },
@@ -74,16 +101,19 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
+    meta: { roles: ["admin", "author"] },
   },
   {
     path: "/newsdetail",
     name: "NewsDetail",
     component: NewsDetail,
+    meta: { roles: ["admin", "author"] },
   },
   {
     path: "/toaudit",
     name: "ToAudit",
     component: ToAudit,
+    meta: { roles: ["admin"] },
   },
 ];
 

@@ -111,7 +111,16 @@ export default {
                 //存储本地
                 localStorage.setItem("user", JSON.stringify(obj));
                 //跳转
-                this.$router.push("/");
+                let role = JSON.parse(
+                  window.localStorage.getItem("user")
+                ).user_identity;
+                if (role === "admin") {
+                  this.$router.push("/");
+                } else if (role === "author") {
+                  this.$router.push("/");
+                } else if (role === "visitor") {
+                  alert("无权限！");
+                }
               } else {
                 this.$message({
                   showClose: true,
