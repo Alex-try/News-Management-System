@@ -1,49 +1,52 @@
 <template>
-  <div class="login-box">
-    <h2>登录</h2>
-    <div class="form">
-      <el-form
-        :model="ruleForm"
-        status-icon
-        :rules="rules"
-        ref="ruleForm"
-        label-width="100px"
-        class="demo-ruleForm"
-      >
-        <el-form-item label="身份" prop="user_identity">
-          <el-select v-model="ruleForm.user_identity" placeholder="请选择身份">
-            <el-option label="管理员" value="admin"></el-option>
-            <el-option label="创作者" value="author"></el-option>
-            <el-option label="普通用户" value="visitor"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="用户名" prop="user_name">
-          <el-input type="text" v-model="ruleForm.user_name"></el-input>
-        </el-form-item>
-        <!-- <el-form-item label="编号" prop="user_id">
-          <el-input type="text" v-model="ruleForm.user_id"></el-input>
-        </el-form-item> -->
-        <el-form-item label="密码" prop="user_password">
-          <el-input
-            type="password"
-            v-model="ruleForm.user_password"
-            autocomplete="off"
-          ></el-input>
-        </el-form-item>
-        <el-form-item style="margin-left: 20px">
-          <el-button
-            type="primary"
-            @click="submitForm('ruleForm')"
-            style="width: 85px"
-            >登录</el-button
-          >
-          <el-button
-            style="margin-left: 30px; width: 85px"
-            @click="resetForm('ruleForm')"
-            >重置</el-button
-          >
-        </el-form-item>
-      </el-form>
+  <div class="whole">
+    <div class="login-box">
+      <h2>登录</h2>
+      <div class="form">
+        <el-form
+          :model="ruleForm"
+          status-icon
+          :rules="rules"
+          ref="ruleForm"
+          label-width="100px"
+          class="demo-ruleForm"
+          @keyup.enter.native="submitForm('ruleForm')"
+        >
+          <el-form-item label="身份" prop="user_identity">
+            <el-select
+              v-model="ruleForm.user_identity"
+              placeholder="请选择身份"
+            >
+              <el-option label="管理员" value="admin"></el-option>
+              <el-option label="创作者" value="author"></el-option>
+              <el-option label="普通用户" value="visitor"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="用户名" prop="user_name">
+            <el-input type="text" v-model="ruleForm.user_name"></el-input>
+          </el-form-item>
+          <el-form-item label="密码" prop="user_password">
+            <el-input
+              type="password"
+              v-model="ruleForm.user_password"
+              autocomplete="off"
+            ></el-input>
+          </el-form-item>
+          <el-form-item style="margin-left: 20px">
+            <el-button
+              type="primary"
+              @click="submitForm('ruleForm')"
+              style="width: 85px"
+              >登录</el-button
+            >
+            <el-button
+              style="margin-left: 30px; width: 85px"
+              @click="resetForm('ruleForm')"
+              >重置</el-button
+            >
+          </el-form-item>
+        </el-form>
+      </div>
     </div>
   </div>
 </template>
@@ -119,7 +122,7 @@ export default {
                 } else if (role === "author") {
                   this.$router.push("/");
                 } else if (role === "visitor") {
-                  alert("无权限！");
+                  this.$router.push("/nopermission");
                 }
               } else {
                 this.$message({
@@ -150,22 +153,27 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.login-box {
-  width: 500px;
-  height: 360px;
-  margin: 180px auto;
-  background-color: #fff;
-  border-radius: 10px;
-  h2 {
-    text-align: center;
-    padding: 20px;
-  }
-  .form {
-    display: flex;
-    // justify-content: center;
-    form {
-      width: 400px;
-      margin-left: 40px;
+.whole {
+  .login-box {
+    width: 500px;
+    height: 360px;
+    margin: 0 auto;
+    margin-top: 100px;
+    background-color: #fff;
+    border-radius: 10px;
+    h2 {
+      text-align: center;
+      padding: 20px;
+      font-size: 30px;
+      letter-spacing: 0.5em;
+    }
+    .form {
+      display: flex;
+      // justify-content: center;
+      form {
+        width: 400px;
+        margin-left: 40px;
+      }
     }
   }
 }

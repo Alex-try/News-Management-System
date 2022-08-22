@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Layout from "../views/Layout/index.vue";
 import Login from "../views/Login/Login.vue";
 import Home from "../views/Home/index.vue";
+import NoPermission from "../views/NoPermission/index.vue";
 
 //异步
 const PersonalInfo = () => import("../views/PersonalInfo/index.vue");
@@ -16,7 +17,7 @@ const AddUser = () => import("../views/AdminUser/AddUser.vue");
 const NewsDetail = () => import("../views/CheckNews/NewsDetail.vue");
 const ToAudit = () => import("../views/CheckNews/ToAudit.vue");
 const WriteNews = () => import("../views/WriteNews/index.vue");
-const Achievements = () => import("../views/Achievements/index.vue");
+const ApplyRecord = () => import("../views/ApplyRecord/index.vue");
 const DraftBox = () => import("../views/DraftBox/index.vue");
 
 Vue.use(VueRouter);
@@ -81,17 +82,17 @@ const routes = [
         ],
       },
       {
-        path: "writenews",
+        path: "/writenews",
         component: WriteNews,
         meta: { roles: ["author"] },
       },
       {
-        path: "achievements",
-        component: Achievements,
+        path: "/applyrecord",
+        component: ApplyRecord,
         meta: { roles: ["author"] },
       },
       {
-        path: "draftbox",
+        path: "/draftbox",
         component: DraftBox,
         meta: { roles: ["author"] },
       },
@@ -107,13 +108,19 @@ const routes = [
     path: "/newsdetail",
     name: "NewsDetail",
     component: NewsDetail,
-    meta: { roles: ["admin", "author"] },
+    meta: { isLogin: true, roles: ["admin", "author"] },
   },
   {
     path: "/toaudit",
     name: "ToAudit",
     component: ToAudit,
-    meta: { roles: ["admin"] },
+    meta: { isLogin: true, roles: ["admin"] },
+  },
+  {
+    path: "/nopermission",
+    name: "NoPermission",
+    component: NoPermission,
+    meta: { roles: ["visitor"] },
   },
 ];
 

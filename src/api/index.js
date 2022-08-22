@@ -84,6 +84,18 @@ const api = {
   addApply(params) {
     return axios.get(base.addApply, { params });
   },
+  //获取申请表记录
+  getApplyRecord(params) {
+    return axios.get(base.getApplyRecord, { params });
+  },
+  //添加申请表记录
+  addDraft(params) {
+    return axios.get(base.addDraft, { params });
+  },
+  //添加申请表记录
+  delApply(params) {
+    return axios.get(base.delApply, { params });
+  },
 };
 
 export default api;

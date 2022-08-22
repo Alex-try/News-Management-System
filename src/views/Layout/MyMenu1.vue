@@ -20,15 +20,15 @@
         <span slot="title">个人信息</span>
       </el-menu-item>
       <el-menu-item index="/writenews">
-        <i class="el-icon-setting"></i>
+        <i class="el-icon-edit"></i>
         <span slot="title">撰写新闻</span>
       </el-menu-item>
-      <el-menu-item index="/achievements">
-        <i class="el-icon-setting"></i>
-        <span slot="title">成就</span>
+      <el-menu-item index="/applyrecord">
+        <i class="el-icon-finished"></i>
+        <span slot="title">申请记录</span>
       </el-menu-item>
       <el-menu-item index="/draftbox">
-        <i class="el-icon-setting"></i>
+        <i class="el-icon-takeaway-box"></i>
         <span slot="title">草稿箱</span>
       </el-menu-item>
     </el-menu>

@@ -423,5 +423,72 @@ router.get("/addApply", (req, res) => {
     }
   });
 });
+/* 获取申请记录 */
+router.get("/getApplyRecord", (req, res) => {
+  let audit_result = req.query.audit_result || "";
+  let author_id = req.query.author_id || "";
+  let sql;
+  if (audit_result === "通过" || audit_result === "驳回") {
+    sql = `SELECT * FROM application,audit 
+            WHERE application.application_id=audit.application_id 
+            AND audit.audit_result LIKE "${audit_result}"
+            AND application.author_id LIKE "${author_id}"`;
+  } else if (audit_result === "待处理") {
+    sql = `SELECT * FROM application WHERE author_id LIKE "${author_id}"
+            AND application_id NOT IN(SELECT application_id FROM audit);`;
+  }
+  sqlFun(sql, null, (result) => {
+    if (result.length >= 0) {
+      res.send({
+        result,
+        status: 200,
+      });
+    } else {
+      res.send({
+        msg: "暂无数据",
+      });
+    }
+  });
+});
+/* 添加草稿 */
+router.get("/addDraft", (req, res) => {
+  let draft_title = req.query.draft_title || "";
+  let topic_id = req.query.topic_id || "";
+  let author_id = req.query.author_id || "";
+  let draft_content = req.query.draft_content || "";
+  let sql = `insert into draftbox(draft_title,topic_id,author_id,draft_content) values(?,?,?,?);`;
+  let arr = [draft_title, topic_id, author_id, draft_content];
+  sqlFun(sql, arr, (result) => {
+    if (result.affectedRows > 0) {
+      res.send({
+        status: 200,
+        msg: "添加成功",
+      });
+    } else {
+      res.send({
+        status: 500,
+        msg: "添加失败",
+      });
+    }
+  });
+});
+/* 删除申请表 */
+router.get("/delApply", (req, res) => {
+  let id = req.query.application_id || "";
+  const sql = `DELETE FROM application WHERE application_id = ${id}`;
+  sqlFun(sql, null, (result) => {
+    if (result.affectedRows > 0) {
+      res.send({
+        status: 200,
+        msg: "删除成功！",
+      });
+    } else {
+      res.send({
+        status: 500,
+        msg: "删除失败！",
+      });
+    }
+  });
+});
 
 module.exports = router;

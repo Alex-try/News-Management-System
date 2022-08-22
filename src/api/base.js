@@ -27,6 +27,9 @@ const base = {
   getUnAudit: "/api/api/getUnAudit", //获取未审核新闻
   addAudit: "/api/api/addAudit", //添加审核表记录
   addApply: "/api/api/addApply", //添加申请表记录
+  getApplyRecord: "/api/api/getApplyRecord", //获取申请记录
+  addDraft: "/api/api/addDraft", //添加草稿
+  delApply: "/api/api/delApply", //删除申请表
 };
 
 export default base;

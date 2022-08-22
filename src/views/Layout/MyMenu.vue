@@ -20,7 +20,7 @@
         <span slot="title">个人信息</span>
       </el-menu-item>
       <el-menu-item index="/adminuser">
-        <i class="el-icon-setting"></i>
+        <i class="el-icon-user"></i>
         <span slot="title">用户管理</span>
       </el-menu-item>
       <el-menu-item index="/admintopic">
@@ -29,7 +29,7 @@
       </el-menu-item>
       <el-submenu index="/checknews">
         <template slot="title">
-          <i class="el-icon-location"></i>
+          <i class="el-icon-circle-check"></i>
           <span>审核新闻</span>
         </template>
         <el-menu-item-group>

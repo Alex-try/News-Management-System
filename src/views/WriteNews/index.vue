@@ -49,7 +49,7 @@
         <el-button type="primary" @click="submitForm()" class="btn"
           >提交申请</el-button
         >
-        <el-button class="btn">存入草稿箱</el-button>
+        <el-button @click="save()" class="btn">存入草稿箱</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -107,6 +107,22 @@ export default Vue.extend({
           this.msg = res.data.msg;
         });
       alert(this.msg);
+      this.applicationForm = {};
+      this.html = "";
+    },
+    save() {
+      this.$api
+        .addDraft({
+          draft_title: this.applicationForm.application_title,
+          topic_id: this.applicationForm.topic_id,
+          author_id: this.author_id,
+          draft_content: this.html,
+        })
+        .then((res) => {
+          console.log(res.data);
+        });
+      this.applicationForm = {};
+      this.html = "";
     },
   },
   mounted() {
