@@ -13,7 +13,7 @@ img{
     vertical-align: middle;
 }
 body{
-    font-family: '微软雅黑','Arial Narrow',sans-serif;
+    /* font-family: '微软雅黑','Arial Narrow',sans-serif; */
+    font-family: PingFang-SC-Bold, PingFang-SC !important;
     font-size: 14px;
-    background-color: #DFDCE3;
 }

@@ -5,23 +5,40 @@
       <!-- 图标 -->
       <i
         class="iconfont icon-left"
-        style="font-size: 30px"
+        style="font-size: 26px"
         @click="changeMenu"
         v-if="!isCollapse"
       >
       </i>
       <i
         class="iconfont icon-right"
-        style="font-size: 30px"
+        style="font-size: 26px"
         @click="changeMenu"
         v-if="isCollapse"
       >
       </i>
 
       <div class="user">
-        <span>{{ userinfo.user_identity }}</span>
-        <span>{{ userinfo.user }}</span>
-        <a @click="loginOut">退出登录</a>
+        <el-dropdown class="avatar-container" trigger="click">
+          <div class="avatar-wrapper">
+            <i class="el-icon-user-solid" />
+            <i class="el-icon-caret-bottom" />
+          </div>
+          <el-dropdown-menu slot="dropdown" class="user-dropdown">
+            <el-dropdown-item disabled>{{
+              userinfo.user_identity
+            }}</el-dropdown-item>
+            <a
+              target="_blank"
+              href="https://github.com/PanJiaChen/vue-admin-template/"
+            >
+              <el-dropdown-item>Github</el-dropdown-item>
+            </a>
+            <el-dropdown-item divided @click.native="loginOut">
+              <span style="display: block">退出</span>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
       </div>
     </div>
     <!-- 内容 -- 路由出口 -->
@@ -59,25 +76,38 @@ export default {
 .header {
   height: 50px;
   line-height: 50px;
-  background-color: #93c178;
-  display: flex;
+  background-color: #57ad58;
   .iconfont {
-    color: #f7ef6a;
-    font-weight: 600;
-    height: 50px;
+    color: #f7f6f6;
+    font-weight: 500;
     vertical-align: middle;
   }
   .user {
     display: flex;
     align-content: space-around;
-    width: 230px;
-    position: fixed;
-    right: 5px;
-    color: #465c8b;
-    font-weight: 600;
-    font-size: 16px;
+    width: 70px;
+    float: right;
+    cursor: pointer;
+    .avatar-container {
+      width: 28px;
+      height: 28px;
+      display: flex !important;
+      padding-right: 10px;
+      white-space: nowrap;
+      .el-icon-user-solid {
+        font-size: 25px;
+        color: #f7f6f6;
+      }
+      .el-icon-caret-bottom {
+        color: #f7f6f6;
+        font-size: 15px;
+      }
+    }
     span {
       width: 70px;
+      color: #f7f6f6;
+      font-size: 16px;
+      font-weight: 500;
     }
   }
 }

@@ -81,6 +81,7 @@ export default {
     padding-bottom: 20px;
     background-color: white;
     border-radius: 5px;
+    border: 2px solid #c6c5c5;
     box-shadow: 10px 10px #465c8b;
     h1 {
       padding-top: 20px;

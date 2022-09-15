@@ -12,6 +12,12 @@ const api = {
     console.log(qs.stringify(params));
     return axios.post(base.login, qs.stringify(params));
   },
+  //获取操作记录
+  getRecords(params) {
+    return axios.get(base.getRecords, {
+      params,
+    });
+  },
   /* 用户管理 */
   // 用户列表
   getUserList(params) {

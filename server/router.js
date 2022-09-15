@@ -5,27 +5,16 @@ const sqlFun = require("./mysql");
 
 //安装并导入模块 JWT两个相关的包
 const jwt = require("jsonwebtoken");
-// const expressJWT = require('express-jwt')
 //定义密钥
 const config = require("./secret");
 
-// 测试路由接口
-/* router.get("/",(req,res)=>{
-    res.send('hello')
-}) */
-
 //路由接口
-/* 登录接口 
-    接收的字段：user_name,user_password,user_identity
-    测试：postman
-*/
 /* 登录 */
 router.post("/login", (req, res) => {
   let { user_name, user_password, user_identity } = req.body;
   let sql = `select * from user where user_name=? and user_password=? and user_identity=?`;
   let arr = [user_name, user_password, user_identity];
   sqlFun(sql, arr, (result) => {
-    // res.send({result})
     if (result.length > 0) {
       let token = jwt.sign(
         {
@@ -44,6 +33,26 @@ router.post("/login", (req, res) => {
       res.send({
         status: 404,
         msg: "信息错误",
+      });
+    }
+  });
+});
+/* 获取操作记录 */
+router.get("/getRecords", (req, res) => {
+  let role_id = req.query.role_id || " ";
+  let role = req.query.role || " ";
+  let sql;
+  if (role === "admin") {
+    sql = `select * from audit where admin_id = "${role_id}"`;
+  } else if (role === "author") {
+    sql = `select * from application where author_id = "${role_id}"`;
+  }
+  sqlFun(sql, null, (data) => {
+    if (data.length > 0) {
+      res.send({
+        status: 200,
+        msg: "获取成功",
+        data,
       });
     }
   });
@@ -325,14 +334,6 @@ router.get("/getAuthorName", (req, res) => {
   let name = req.query.name || "";
   // let topic_id = req.query.command;
   let id = req.query.id;
-  /* if (name === "author_name") {
-    id = "author_id";
-  } else {
-    id = "admin_id";
-  }
-  if (topic_id === "a") {
-    topic_id = "%";
-  } */
   const sql = `SELECT user_name ${name}
                FROM user
                WHERE user_id = ${id};`;

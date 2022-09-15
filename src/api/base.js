@@ -12,6 +12,7 @@ const base = {
   userList: "/api/api/user", //用户列表
   search: "/api/api/search", //搜索用户
   login: "/api/api/login", //登录接口
+  getRecords: "/api/api/getRecords", //获取操作记录
   addUser: "/api/api/addUser", //添加人员
   initPsw: "api/api/initPsw", //初始化密码
   delUser: "api/api/delUser", //删除人员

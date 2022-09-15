@@ -14,21 +14,21 @@
 
 <script>
 export default {
-    props:{
-        total:{
-            type:Number,
-            default:100
-        },
-        pageSize:{
-            type:Number,
-            default:10
-        }
+  props: {
+    total: {
+      type: Number,
+      default: 100,
     },
-    methods: {
-        changePage(page){
-            this.$emit("changePage",page)
-        }
+    pageSize: {
+      type: Number,
+      default: 10,
     },
+  },
+  methods: {
+    changePage(page) {
+      this.$emit("changePage", page);
+    },
+  },
 };
 </script>
 
@@ -38,15 +38,15 @@ export default {
   display: flex;
   justify-content: center;
 }
-.pagination{
-    height: 50px;
-    background: #a0cc87;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    .el-pagination.is-background .el-pager li:not(.disabled).active{
-        background-color: #a2b498;
-    }
+.pagination {
+  height: 50px;
+  background: #87be67;
+  border-radius: 10px;
+  display: flex;
+  padding: 0 15px;
+  align-items: center;
+  .el-pagination.is-background .el-pager li:not(.disabled).active {
+    background-color: #8abb70;
+  }
 }
-
 </style>
