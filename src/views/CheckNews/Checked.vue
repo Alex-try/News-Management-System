@@ -73,60 +73,23 @@ export default {
       this.$api.getTopics({ id: "%" }).then((res) => {
         // console.log(res.data.result);
         this.topics = res.data.result;
-        /* res.data.result.forEach((item, index) => {
-          this.topics[index] = item.topic_name;
-        }); */
-        // console.log(this.topics);
       });
+      this.showItems("a");
     },
     /* 展示已审核 */
     showItems(command) {
       this.tableData = [];
       let temp = [];
-      let AuthorId = [];
-      let AdminId = [];
-      /* 获取作者姓名 */
-      /* let AuthorNames = [];
-      AuthorNames[AuthorNames.length] = new Object();
-      this.$api.getAuthorName({ name: "author_name", command }).then((res) => {
-        console.log(res.data.result);
-        AuthorNames = res.data.result;
-      });
-      /* 获取审核人姓名 */
-      /* let AuditNames = [];
-      AuditNames[AuditNames.length] = new Object();
-      this.$api.getAuthorName({ name: "admin_name", command }).then((res) => {
-        // console.log(res.data.result);
-        AuditNames = res.data.result;
-        // console.log(AuditNames);
-      });  */
       /* 获取审核表信息 */
       this.$api.getAudit({ command }).then((res) => {
-        // console.log(res.data.result);
+        console.log(res.data.result);
         for (let i = 0; i < res.data.result.length; i++) {
           temp[i] = new Object();
-          AuthorId[i] = res.data.result[i].author_id;
-          AdminId[i] = res.data.result[i].admin_id;
-          /* 获取作者姓名 */
-          this.$api
-            .getAuthorName({ name: "author_name", id: AuthorId[i] })
-            .then((res) => {
-              // console.log(res.data.result);
-              temp[i].author_name = res.data.result[0].author_name;
-              // console.log(AuditNames);
-            });
-          /* 获取审核人姓名 */
-          this.$api
-            .getAuthorName({ name: "admin_name", id: AdminId[i] })
-            .then((res) => {
-              // console.log(res.data.result);
-              temp[i].admin_name = res.data.result[0].admin_name;
-              // console.log(AuditNames);
-            });
+          temp[i].author_name = res.data.result[i].author_name;
+          temp[i].admin_name = res.data.result[i].admin_name;
           /* 获取专题名 */
           let topic_id = res.data.result[i].topic_id;
           this.$api.getTopics({ id: topic_id }).then((res) => {
-            console.log(res.data.result);
             temp[i].topic_name = res.data.result[0].topic_name;
           });
           temp[i].application_title = res.data.result[i].application_title;

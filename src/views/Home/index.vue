@@ -31,7 +31,7 @@ export default {
         .then((res) => {
           this.recordList = res.data.data;
           this.flag = true;
-          // console.log(this.recordList);
+          console.log(this.flag);
         });
     },
   },

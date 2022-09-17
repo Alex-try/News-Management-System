@@ -39,10 +39,7 @@ export default {
 
 <style lang="less" scoped>
 .layout {
-  // display: flex;
   .menu {
-    /* width: 200px;
-    min-height: 500px; */
     background: #465c8b;
     //一般用于导航栏吸顶效果,搭配top,bottom,left,right使用
     /* 注意点：

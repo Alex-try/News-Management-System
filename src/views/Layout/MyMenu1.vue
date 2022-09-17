@@ -3,10 +3,11 @@
     <el-menu
       default-active="$router.path"
       class="el-menu-vertical-demo"
-      background-color="#465C8B"
+      background-color="#0e5754"
       text-color="#fff"
-      active-text-color="#ffd04b"
+      active-text-color="#c9dd22"
       router
+      style="border: none; height: 100%"
       :collapse="isCollapse"
     >
       <el-menu-item><span>VOC新闻管理系统</span></el-menu-item>

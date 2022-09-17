@@ -28,6 +28,7 @@
             <el-dropdown-item disabled>{{
               userinfo.user_identity
             }}</el-dropdown-item>
+            <el-dropdown-item disabled>{{ userinfo.user }}</el-dropdown-item>
             <a
               target="_blank"
               href="https://github.com/PanJiaChen/vue-admin-template/"
@@ -90,7 +91,7 @@ export default {
     cursor: pointer;
     .avatar-container {
       width: 28px;
-      height: 28px;
+      height: 100%;
       display: flex !important;
       padding-right: 10px;
       white-space: nowrap;

@@ -149,24 +149,26 @@ export default {
     },
     formatData() {
       let submissionRecord = {};
-      this.recordList.map((v) => {
-        let role = JSON.parse(
-          window.localStorage.getItem("user")
-        ).user_identity;
-        let date;
-        if (role === "admin") {
-          date = moment(v["audit_time"]).format("YYYY-MM-DD");
-        }
-        if (role === "author") {
-          date = moment(v["application_time"]).format("YYYY-MM-DD");
-        }
-        submissionRecord[date] = submissionRecord[date]
-          ? submissionRecord[date] + 1
-          : 1;
-      });
-      // submissionRecord 最后的格式应为 {'2020-01-01':10, '2020-01-11}
-      this.submissionRecord = submissionRecord;
-      console.log(this.submissionRecord);
+      if (this.recordList) {
+        this.recordList.map((v) => {
+          let role = JSON.parse(
+            window.localStorage.getItem("user")
+          ).user_identity;
+          let date;
+          if (role === "admin") {
+            date = moment(v["audit_time"]).format("YYYY-MM-DD");
+          }
+          if (role === "author") {
+            date = moment(v["application_time"]).format("YYYY-MM-DD");
+          }
+          submissionRecord[date] = submissionRecord[date]
+            ? submissionRecord[date] + 1
+            : 1;
+        });
+        // submissionRecord 最后的格式应为 {'2020-01-01':10, '2020-01-11}
+        this.submissionRecord = submissionRecord;
+        console.log(this.submissionRecord);
+      }
     },
     getColor(number) {
       // level color

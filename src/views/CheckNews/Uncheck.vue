@@ -76,26 +76,11 @@ export default {
     showItems(command) {
       this.tableData = [];
       let temp = [];
-      let AuthorId = [];
       this.$api.getUnAudit({ command }).then((res) => {
-        // console.log(res.data.result);
         for (let i = 0; i < res.data.result.length; i++) {
           temp[i] = new Object();
-          AuthorId[i] = res.data.result[i].author_id;
-          /* 获取作者姓名 */
-          this.$api
-            .getAuthorName({ name: "author_name", id: AuthorId[i] })
-            .then((res) => {
-              // console.log(res.data.result);
-              temp[i].author_name = res.data.result[0].author_name;
-              // console.log(AuditNames);
-            });
-          /* 获取专题名 */
-          let topic_id = res.data.result[i].topic_id;
-          this.$api.getTopics({ id: topic_id }).then((res) => {
-            // console.log(res.data.result);
-            temp[i].topic_name = res.data.result[0].topic_name;
-          });
+          temp[i].author_name = res.data.result[i].author_name;
+          temp[i].topic_name = res.data.result[i].topic_name;
           temp[i].application_id = res.data.result[i].application_id;
           temp[i].application_title = res.data.result[i].application_title;
           temp[i].application_time = this.formatTime(

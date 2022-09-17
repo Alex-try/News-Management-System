@@ -3,8 +3,6 @@ import router from "./index";
 import store from "../store/index";
 //路由拦截
 router.beforeEach((to, from, next) => {
-  /* console.log("上个页面", from);
-  console.log("下个页面", to); */
   // console.log(store.state.loginModule.userinfo.token);
   //判断是否需要登录
   if (to.matched.some((ele) => ele.meta.isLogin)) {
@@ -29,7 +27,6 @@ router.beforeEach((to, from, next) => {
       }
     } else {
       next("/login");
-      alert("请先登录！！！");
     }
   } else {
     next();

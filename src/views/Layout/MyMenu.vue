@@ -9,6 +9,7 @@
       router
       style="border: none; height: 100%"
       :collapse="isCollapse"
+      collapse-transition
     >
       <el-menu-item><span>VOC新闻管理系统</span></el-menu-item>
       <el-menu-item index="/">

@@ -4,11 +4,9 @@
       <h1>审核申请</h1>
       <div class="details">
         <div>新闻标题：{{ auditForm.application_title }}</div>
-        <div>
-          <tr>
-            <td id="news-content">新闻内容：</td>
-            <p v-html="auditForm.application_content"></p>
-          </tr>
+        <div>新闻内容：</div>
+        <div class="news-content">
+          <p v-html="auditForm.application_content"></p>
         </div>
         <div>所属专题：{{ auditForm.topic_name }}</div>
       </div>
@@ -125,6 +123,7 @@ export default {
     padding-bottom: 20px;
     background-color: white;
     border-radius: 5px;
+    border: #465c8b 1px solid;
     box-shadow: 10px 10px #465c8b;
     h1 {
       padding-top: 20px;
@@ -137,12 +136,13 @@ export default {
       div {
         margin: 5px;
         padding: 5px;
+        p {
+          text-indent: 2em;
+        }
       }
-      #news-content {
-        width: 76px;
-      }
-      p {
-        text-indent: 2em;
+      .news-content {
+        border: #7a808d 1px dotted;
+        border-radius: 4px;
       }
     }
     .audit-result {

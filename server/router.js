@@ -51,8 +51,13 @@ router.get("/getRecords", (req, res) => {
     if (data.length > 0) {
       res.send({
         status: 200,
-        msg: "获取成功",
+        msg: "有记录",
         data,
+      });
+    } else {
+      res.send({
+        status: 500,
+        msg: "没有记录",
       });
     }
   });
@@ -313,9 +318,11 @@ router.get("/getAudit", (req, res) => {
   if (topic_id === "a") {
     topic_id = "%";
   }
-  const sql = `SELECT * FROM application,audit 
+  const sql = `SELECT *, a.user_name as author_name,b.user_name as admin_name 
+                FROM user a,user b, application,audit 
                WHERE application.application_id=audit.application_id 
-               AND application.topic_id LIKE "${topic_id}";`;
+               AND application.topic_id LIKE "${topic_id}" AND
+               a.user_id=application.author_id AND b.user_id=audit.admin_id;`;
   sqlFun(sql, null, (result) => {
     if (result.length >= 0) {
       res.send({
@@ -356,7 +363,11 @@ router.get("/getUnAudit", (req, res) => {
   if (topic_id === "a") {
     topic_id = "%";
   }
-  const sql = `SELECT * FROM application WHERE application.topic_id LIKE "${topic_id}" 
+  const sql = `SELECT *,user_name as author_name,topic_name
+               FROM application,user,topic
+               WHERE application.topic_id LIKE "${topic_id}"
+                AND user.user_id=application.author_id
+                AND application.topic_id=topic.topic_id
                 AND application.application_id NOT IN(
                     SELECT audit.application_id FROM audit)`;
   sqlFun(sql, null, (result) => {
