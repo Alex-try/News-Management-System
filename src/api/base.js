@@ -12,6 +12,7 @@ const base = {
   userList: "/api/api/user", //用户列表
   search: "/api/api/search", //搜索用户
   login: "/api/api/login", //登录接口
+  signup: "/api/api/signup", //注册
   getRecords: "/api/api/getRecords", //获取操作记录
   addUser: "/api/api/addUser", //添加人员
   initPsw: "api/api/initPsw", //初始化密码
@@ -31,6 +32,8 @@ const base = {
   getApplyRecord: "/api/api/getApplyRecord", //获取申请记录
   addDraft: "/api/api/addDraft", //添加草稿
   delApply: "/api/api/delApply", //删除申请表
+  showDraft: "/api/api/showDraft", //展示草稿
+  delDraft: "/api/api/delDraft", //删除草稿
 };
 
 export default base;

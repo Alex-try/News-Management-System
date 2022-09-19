@@ -3,7 +3,6 @@ import VueRouter from "vue-router";
 import Layout from "../views/Layout/index.vue";
 import Login from "../views/Login/Login.vue";
 import Home from "../views/Home/index.vue";
-import NoPermission from "../views/NoPermission/index.vue";
 
 //异步
 const PersonalInfo = () => import("../views/PersonalInfo/index.vue");
@@ -19,6 +18,7 @@ const ToAudit = () => import("../views/CheckNews/ToAudit.vue");
 const WriteNews = () => import("../views/WriteNews/index.vue");
 const ApplyRecord = () => import("../views/ApplyRecord/index.vue");
 const DraftBox = () => import("../views/DraftBox/index.vue");
+const EditDraft = () => import("../views/DraftBox/EditDraft.vue");
 
 Vue.use(VueRouter);
 
@@ -94,6 +94,12 @@ const routes = [
       {
         path: "/draftbox",
         component: DraftBox,
+        name: DraftBox,
+        meta: { roles: ["author"] },
+      },
+      {
+        path: "/editdraft",
+        component: EditDraft,
         meta: { roles: ["author"] },
       },
     ],
@@ -115,12 +121,6 @@ const routes = [
     name: "ToAudit",
     component: ToAudit,
     meta: { isLogin: true, roles: ["admin"] },
-  },
-  {
-    path: "/nopermission",
-    name: "NoPermission",
-    component: NoPermission,
-    meta: { roles: ["visitor"] },
   },
 ];
 

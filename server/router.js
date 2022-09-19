@@ -37,6 +37,25 @@ router.post("/login", (req, res) => {
     }
   });
 });
+/* 注册 */
+router.post("/signup", (req, res) => {
+  let { user_name, user_password, user_identity } = req.body;
+  let sql = `insert into user(user_name,user_password,user_identity) values(?,?,?)`;
+  let arr = [user_name, user_password, user_identity];
+  sqlFun(sql, arr, (result) => {
+    if (result.affectedRows > 0) {
+      res.send({
+        status: 200,
+        msg: "注册成功",
+      });
+    } else {
+      res.send({
+        status: 500,
+        msg: "注册失败",
+      });
+    }
+  });
+});
 /* 获取操作记录 */
 router.get("/getRecords", (req, res) => {
   let role_id = req.query.role_id || " ";
@@ -488,6 +507,44 @@ router.get("/addDraft", (req, res) => {
 router.get("/delApply", (req, res) => {
   let id = req.query.application_id || "";
   const sql = `DELETE FROM application WHERE application_id = ${id}`;
+  sqlFun(sql, null, (result) => {
+    if (result.affectedRows > 0) {
+      res.send({
+        status: 200,
+        msg: "删除成功！",
+      });
+    } else {
+      res.send({
+        status: 500,
+        msg: "删除失败！",
+      });
+    }
+  });
+});
+/* 展示草稿 */
+router.get("/showDraft", (req, res) => {
+  let id = req.query.author_id || " ";
+  let sql = `select * from draftbox,topic
+             where topic.topic_id=draftbox.topic_id and draftbox.author_id=?;`;
+  sqlFun(sql, id, (result) => {
+    if (result.length > 0) {
+      res.send({
+        status: 200,
+        msg: "获取成功",
+        data: result,
+      });
+    } else {
+      res.send({
+        status: 500,
+        msg: "获取失败",
+      });
+    }
+  });
+});
+/* 删除草稿 */
+router.get("/delDraft", (req, res) => {
+  let id = req.query.draft_id || "";
+  const sql = `DELETE FROM draftbox WHERE draft_id = ${id}`;
   sqlFun(sql, null, (result) => {
     if (result.affectedRows > 0) {
       res.send({

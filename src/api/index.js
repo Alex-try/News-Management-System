@@ -12,6 +12,12 @@ const api = {
     console.log(qs.stringify(params));
     return axios.post(base.login, qs.stringify(params));
   },
+  //注册接口
+  signup(params) {
+    //params={user_name,user_password,user_identity}
+    console.log(qs.stringify(params));
+    return axios.post(base.signup, qs.stringify(params));
+  },
   //获取操作记录
   getRecords(params) {
     return axios.get(base.getRecords, {
@@ -101,6 +107,14 @@ const api = {
   //添加申请表记录
   delApply(params) {
     return axios.get(base.delApply, { params });
+  },
+  //展示草稿
+  showDraft(params) {
+    return axios.get(base.showDraft, { params });
+  },
+  //删除草稿
+  delDraft(params) {
+    return axios.get(base.delDraft, { params });
   },
 };
 

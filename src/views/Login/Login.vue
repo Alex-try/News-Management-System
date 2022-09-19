@@ -18,7 +18,6 @@
             >
               <el-option label="管理员" value="admin"></el-option>
               <el-option label="创作者" value="author"></el-option>
-              <el-option label="普通用户" value="visitor"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="用户名" prop="user_name">
@@ -211,8 +210,6 @@ export default {
                   this.$router.push("/");
                 } else if (role === "author") {
                   this.$router.push("/");
-                } else if (role === "visitor") {
-                  this.$router.push("/nopermission");
                 }
               } else {
                 this.$message({
@@ -232,18 +229,18 @@ export default {
     submitRegister(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          let { user_name, user_password, phone, email } = this.signupForm;
-          let user_identity = "visitor";
-          console.log(user_name, user_password, phone, email);
+          let { user_name, user_password } = this.signupForm;
+          let user_identity = "author";
+          console.log(user_name, user_password);
           this.$api
-            .signup({ user_name, user_password, user_identity, phone, email })
+            .signup({ user_name, user_password, user_identity })
             .then((res) => {
               alert(res.data.msg);
             });
         } else {
           alert("不规范！");
         }
-        this.$router.push("/homepage");
+        // this.$router.push("/");
       });
       this.tosignup = false;
     },
@@ -254,14 +251,13 @@ export default {
 <style lang="less" scoped>
 .whole {
   height: 100vh;
-  /* background: linear-gradien(
+  background: linear-gradient(
     to bottom,
     #0e5754 0%,
     #0e5754 50%,
-    rgb(222, 224, 222) 50%,
-    rgb(222, 224, 222) 100%
-  ); */
-  background: #0e5754;
+    #f6f5f5 50%,
+    #f6f5f5 100%
+  );
   display: flex;
   justify-content: center;
   align-items: center;

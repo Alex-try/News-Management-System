@@ -1,5 +1,5 @@
 <template>
-  <div class="writenews">
+  <div class="editnews">
     <div class="writeinfo">
       <el-form :inline="true" :model="applicationForm">
         <el-form-item label="新闻标题">
@@ -9,7 +9,10 @@
           ></el-input>
         </el-form-item>
         <el-form-item label="所属专题">
-          <el-select v-model="applicationForm.topic_id">
+          <el-select
+            v-model="applicationForm.topic_id"
+            :placeholder="cur_topic"
+          >
             <el-option
               v-for="item in topics"
               :key="item.topic_id"
@@ -31,7 +34,6 @@
         <Editor
           style="height: 280px; overflow-y: hidden"
           v-model="html"
-          :defaultConfig="editorConfig"
           :mode="mode"
           @onCreated="onCreated"
         />
@@ -49,32 +51,34 @@
         <el-button type="primary" @click="submitForm()" class="btn"
           >提交申请</el-button
         >
-        <el-button @click="save()" class="btn">存入草稿箱</el-button>
+        <el-button @click="cancel()" class="btn">取消</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
 import { Editor, Toolbar } from "@wangeditor/editor-for-vue";
-
-export default Vue.extend({
-  components: { Editor, Toolbar },
+export default {
+  components: {
+    Editor,
+    Toolbar,
+  },
   data() {
     let author_id = JSON.parse(window.localStorage.getItem("user")).user_id;
     return {
       editor: null,
-      html: "<p>hello</p>",
+      html: this.$route.query.application_content,
       toolbarConfig: {},
-      editorConfig: { placeholder: "请输入内容..." },
+      // editorConfig: { placeholder: this.html },
       mode: "default", // or 'simple'
       applicationForm: {
-        application_title: "",
-        topic_id: "",
+        application_title: this.$route.query.application_title,
+        topic_id: this.$route.query.topic_name,
         author_id: author_id,
         application_time: new Date(),
       },
+      cur_topic: this.$route.query.topic_name,
       topics: [],
       msg: "",
     };
@@ -94,6 +98,7 @@ export default Vue.extend({
     submitForm() {
       let { application_title, author_id, topic_id, application_time } =
         this.applicationForm;
+      let draft_id = this.$route.query.draft_id;
       this.$api
         .addApply({
           application_title,
@@ -103,33 +108,31 @@ export default Vue.extend({
           application_content: this.html,
         })
         .then((res) => {
-          console.log(res.data.msg);
-          this.msg = res.data.msg;
-        });
-      alert(this.msg);
-      this.applicationForm = {};
-      this.html = "";
-    },
-    save() {
-      this.$api
-        .addDraft({
-          draft_title: this.applicationForm.application_title,
-          topic_id: this.applicationForm.topic_id,
-          author_id: this.applicationForm.author_id,
-          draft_content: this.html,
-        })
-        .then((res) => {
           console.log(res.data);
-          this.$message("保存成功！");
+          console.log(draft_id);
+          this.$api
+            .delDraft({
+              draft_id: draft_id,
+            })
+            .then((res1) => {
+              console.log(res1.data);
+            });
         });
-      this.applicationForm = {};
-      this.html = "";
+      this.$message({
+        message: "提交成功",
+        type: "success",
+      });
+      this.$router.go(-1);
+    },
+    cancel() {
+      this.$router.go(-1);
     },
   },
   mounted() {
     // 模拟 ajax 请求，异步渲染编辑器
+    let content = this.$route.query.application_content;
     setTimeout(() => {
-      this.html = "<p>请输入内容</p>";
+      this.html = content;
     }, 1500);
   },
   beforeDestroy() {
@@ -140,11 +143,12 @@ export default Vue.extend({
   created() {
     this.http();
   },
-});
+};
 </script>
+
 <style src="@wangeditor/editor/dist/css/style.css"></style>
 <style lang="less" scoped>
-.writenews {
+.editnews {
   padding: 20px 20px 0px 20px;
   .writeinfo {
     width: 100%;
