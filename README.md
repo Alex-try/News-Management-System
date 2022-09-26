@@ -21,47 +21,47 @@
 
 1、登录
 
-<img src="D:\Aweb学习\news效果动图\登录-管理员.gif"  />
+<img src="D:\Aweb学习\vue-news\news效果动图\登录-管理员.gif"  />
 
 2、后台系统首页
 
-![](D:\Aweb学习\news效果动图\管理员-首页.gif)
+![](D:\Aweb学习\vue-news\news效果动图\管理员-首页.gif)
 
 3、个人信息
 
-![](D:\Aweb学习\news效果动图\管理员-个人信息.gif)
+![](D:\Aweb学习\vue-news\news效果动图\管理员-个人信息.gif)
 
 4、用户管理
 
-![](D:\Aweb学习\news效果动图\用户管理-管理员.gif)
+![](D:\Aweb学习\vue-news\news效果动图\用户管理-管理员.gif)
 
 5、专题管理
 
-![](D:\Aweb学习\news效果动图\专题管理-管理员.gif)
+![](D:\Aweb学习\vue-news\news效果动图\专题管理-管理员.gif)
 
 6、审核新闻
 
-![](D:\Aweb学习\news效果动图\审核新闻-管理员.gif)
+![](D:\Aweb学习\vue-news\news效果动图\审核新闻-管理员.gif)
 
 7、退出登录
 
-![退出登录](D:\Aweb学习\news效果动图\退出登录.gif)
+![退出登录](D:\Aweb学习\vue-news\news效果动图\退出登录.gif)
 
 ## 创作者功能
 
 1、注册与登录
 
-![](D:\Aweb学习\news效果动图\注册登录-创作者.gif)
+![](D:\Aweb学习\vue-news\news效果动图\注册登录-创作者.gif)
 
 2、撰写新闻
 
-![](D:\Aweb学习\news效果动图\提交新闻稿-创作者.gif)
+![](D:\Aweb学习\vue-news\news效果动图\提交新闻稿-创作者.gif)
 
 3、存入草稿箱
 
-![](D:\Aweb学习\news效果动图\存草稿-创作者.gif)
+![](D:\Aweb学习\vue-news\news效果动图\存草稿-创作者.gif)
 
 4、编辑草稿与删除草稿
 
-![](D:\Aweb学习\news效果动图\草稿箱-创作者.gif)
+![](D:\Aweb学习\vue-news\news效果动图\草稿箱-创作者.gif)
 
