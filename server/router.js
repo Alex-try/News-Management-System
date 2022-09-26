@@ -460,12 +460,15 @@ router.get("/getApplyRecord", (req, res) => {
   let author_id = req.query.author_id || "";
   let sql;
   if (audit_result === "通过" || audit_result === "驳回") {
-    sql = `SELECT * FROM application,audit 
+    sql = `SELECT *,user.user_name as admin_name FROM application,audit,topic,user 
             WHERE application.application_id=audit.application_id 
+            AND application.topic_id=topic.topic_id
+            AND audit.admin_id=user.user_id
             AND audit.audit_result LIKE "${audit_result}"
             AND application.author_id LIKE "${author_id}"`;
   } else if (audit_result === "待处理") {
-    sql = `SELECT * FROM application WHERE author_id LIKE "${author_id}"
+    sql = `SELECT * FROM application,topic WHERE author_id LIKE "${author_id}"
+            AND application.topic_id=topic.topic_id
             AND application_id NOT IN(SELECT application_id FROM audit);`;
   }
   sqlFun(sql, null, (result) => {

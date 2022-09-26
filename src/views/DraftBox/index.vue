@@ -86,8 +86,9 @@ export default {
         .then(() => {
           this.$message({
             type: "success",
-            message: "撤回成功!",
+            message: "删除成功!",
           });
+          console.log(this.tableData[index].draft_id);
           this.$api
             .delDraft({
               draft_id: this.tableData[index].draft_id,

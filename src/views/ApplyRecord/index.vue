@@ -105,6 +105,7 @@ export default {
               res.data.result[i].application_time
             );
             temp[i].topic_id = res.data.result[i].topic_id;
+            temp[i].topic_name = res.data.result[i].topic_name;
             temp[i].audit_time = "暂无";
             temp[i].admin_name = "暂无";
             temp[i].audit_result = "暂无";
@@ -115,28 +116,14 @@ export default {
               );
               temp[i].audit_result = r[command];
               temp[i].audit_info = res.data.result[i].audit_info;
-              /* 获取审核人姓名 */
-              let admin_id = res.data.result[i].admin_id;
-              // console.log(admin_id);
-              this.$api
-                .getAuthorName({ name: "admin_name", id: admin_id })
-                .then((res) => {
-                  temp[i].admin_name = res.data.result[0].admin_name;
-                });
+              temp[i].admin_name = res.data.result[i].admin_name;
+              // console.log(res.data.result[i]);
             }
-            /* 获取专题名 */
-            let topic_id = res.data.result[i].topic_id;
-            // console.log(res.data.result);
-            this.$api.getTopics({ id: topic_id }).then((res) => {
-              temp[i].topic_name = res.data.result[0].topic_name;
-            });
           }
-          // console.log(res.data.result);
           // console.log(temp);
           if (command === "2") {
             this.flag = false;
             this.tableData1 = temp;
-            // console.log(this.tableData1);
           } else {
             this.flag = true;
             this.tableData = temp;

@@ -31,7 +31,7 @@
             <el-dropdown-item disabled>{{ userinfo.user }}</el-dropdown-item>
             <a
               target="_blank"
-              href="https://github.com/PanJiaChen/vue-admin-template/"
+              href="https://github.com/Alex-try/News-Management-System.git"
             >
               <el-dropdown-item>Github</el-dropdown-item>
             </a>
