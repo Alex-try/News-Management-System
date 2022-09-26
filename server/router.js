@@ -334,14 +334,16 @@ router.get("/getTopics", (req, res) => {
 /* 获取已审核表 */
 router.get("/getAudit", (req, res) => {
   let topic_id = req.query.command;
+  let role_id = req.query.role_id || " ";
   if (topic_id === "a") {
     topic_id = "%";
   }
   const sql = `SELECT *, a.user_name as author_name,b.user_name as admin_name 
                 FROM user a,user b, application,audit 
                WHERE application.application_id=audit.application_id 
-               AND application.topic_id LIKE "${topic_id}" AND
-               a.user_id=application.author_id AND b.user_id=audit.admin_id;`;
+               AND application.topic_id LIKE "${topic_id}" 
+               AND audit.admin_id like "${role_id}"
+               AND a.user_id=application.author_id AND b.user_id=audit.admin_id;`;
   sqlFun(sql, null, (result) => {
     if (result.length >= 0) {
       res.send({

@@ -26,7 +26,6 @@
           <el-select v-model="userForm.user_identity" placeholder="请选择身份">
             <el-option label="管理者" value="admin"></el-option>
             <el-option label="创作者" value="author"></el-option>
-            <el-option label="普通用户" value="visitor"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="密码" prop="user_password">

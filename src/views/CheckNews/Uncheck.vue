@@ -71,12 +71,14 @@ export default {
         // console.log(res.data.result);
         this.topics = res.data.result;
       });
+      this.showItems("a");
     },
     /* 展示未审核 */
     showItems(command) {
       this.tableData = [];
       let temp = [];
-      this.$api.getUnAudit({ command }).then((res) => {
+      let role_id = JSON.parse(window.localStorage.getItem("user")).user_id;
+      this.$api.getUnAudit({ command, role_id }).then((res) => {
         for (let i = 0; i < res.data.result.length; i++) {
           temp[i] = new Object();
           temp[i].author_name = res.data.result[i].author_name;
