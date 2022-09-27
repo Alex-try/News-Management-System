@@ -21,47 +21,51 @@
 
 1、登录
 
-<img src="https://github.com/Alex-try/News-Management-System/blob/master/news%E6%95%88%E6%9E%9C%E5%8A%A8%E5%9B%BE/%E4%B8%93%E9%A2%98%E7%AE%A1%E7%90%86-%E7%AE%A1%E7%90%86%E5%91%98.gif"  />
+<img src="https://github.com/Alex-try/News-Management-System/blob/master/news%E6%95%88%E6%9E%9C%E5%8A%A8%E5%9B%BE/%E7%99%BB%E5%BD%95-%E7%AE%A1%E7%90%86%E5%91%98.gif"  />
 
 2、后台系统首页
 
-![](D:\Aweb学习\vue-news\news效果动图\管理员-首页.gif)
+![](https://github.com/Alex-try/News-Management-System/blob/master/news%E6%95%88%E6%9E%9C%E5%8A%A8%E5%9B%BE/%E7%AE%A1%E7%90%86%E5%91%98-%E9%A6%96%E9%A1%B5.gif)
 
 3、个人信息
 
-![](D:\Aweb学习\vue-news\news效果动图\管理员-个人信息.gif)
+![](https://github.com/Alex-try/News-Management-System/blob/master/news%E6%95%88%E6%9E%9C%E5%8A%A8%E5%9B%BE/%E7%AE%A1%E7%90%86%E5%91%98-%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF.gif)
 
 4、用户管理
 
-![](D:\Aweb学习\vue-news\news效果动图\用户管理-管理员.gif)
+![](https://github.com/Alex-try/News-Management-System/blob/master/news%E6%95%88%E6%9E%9C%E5%8A%A8%E5%9B%BE/%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86-%E7%AE%A1%E7%90%86%E5%91%98.gif)
 
 5、专题管理
 
-![](D:\Aweb学习\vue-news\news效果动图\专题管理-管理员.gif)
+![](https://github.com/Alex-try/News-Management-System/blob/master/news%E6%95%88%E6%9E%9C%E5%8A%A8%E5%9B%BE/%E4%B8%93%E9%A2%98%E7%AE%A1%E7%90%86-%E7%AE%A1%E7%90%86%E5%91%98.gif)
 
 6、审核新闻
 
-![](D:\Aweb学习\vue-news\news效果动图\审核新闻-管理员.gif)
+![](https://github.com/Alex-try/News-Management-System/blob/master/news%E6%95%88%E6%9E%9C%E5%8A%A8%E5%9B%BE/%E5%AE%A1%E6%A0%B8%E6%96%B0%E9%97%BB-%E7%AE%A1%E7%90%86%E5%91%98.gif)
 
 7、退出登录
 
-![退出登录](D:\Aweb学习\vue-news\news效果动图\退出登录.gif)
+![](https://github.com/Alex-try/News-Management-System/blob/master/news%E6%95%88%E6%9E%9C%E5%8A%A8%E5%9B%BE/%E9%80%80%E5%87%BA%E7%99%BB%E5%BD%95.gif)
 
 ## 创作者功能
 
 1、注册与登录
 
-![](D:\Aweb学习\vue-news\news效果动图\注册登录-创作者.gif)
+![](https://github.com/Alex-try/News-Management-System/blob/master/news%E6%95%88%E6%9E%9C%E5%8A%A8%E5%9B%BE/%E6%B3%A8%E5%86%8C%E7%99%BB%E5%BD%95-%E5%88%9B%E4%BD%9C%E8%80%85.gif)
 
 2、撰写新闻
 
-![](D:\Aweb学习\vue-news\news效果动图\提交新闻稿-创作者.gif)
+![](https://github.com/Alex-try/News-Management-System/blob/master/news%E6%95%88%E6%9E%9C%E5%8A%A8%E5%9B%BE/%E6%8F%90%E4%BA%A4%E6%96%B0%E9%97%BB%E7%A8%BF-%E5%88%9B%E4%BD%9C%E8%80%85.gif)
 
 3、存入草稿箱
 
-![](D:\Aweb学习\vue-news\news效果动图\存草稿-创作者.gif)
+![](https://github.com/Alex-try/News-Management-System/blob/master/news%E6%95%88%E6%9E%9C%E5%8A%A8%E5%9B%BE/%E5%AD%98%E8%8D%89%E7%A8%BF-%E5%88%9B%E4%BD%9C%E8%80%85.gif)
 
-4、编辑草稿与删除草稿
+4、申请记录
 
-![](D:\Aweb学习\vue-news\news效果动图\草稿箱-创作者.gif)
+![](https://github.com/Alex-try/News-Management-System/blob/master/news%E6%95%88%E6%9E%9C%E5%8A%A8%E5%9B%BE/%E7%94%B3%E8%AF%B7%E8%AE%B0%E5%BD%95-%E5%88%9B%E4%BD%9C%E8%80%85.gif)
+
+5、编辑草稿与删除草稿
+
+![](https://github.com/Alex-try/News-Management-System/blob/master/news%E6%95%88%E6%9E%9C%E5%8A%A8%E5%9B%BE/%E8%8D%89%E7%A8%BF%E7%AE%B1-%E5%88%9B%E4%BD%9C%E8%80%85.gif)
 
