@@ -21,7 +21,7 @@
 
 1、登录
 
-<img src="D:\Aweb学习\vue-news\news效果动图\登录-管理员.gif"  />
+<img src="https://github.com/Alex-try/News-Management-System/blob/master/news%E6%95%88%E6%9E%9C%E5%8A%A8%E5%9B%BE/%E4%B8%93%E9%A2%98%E7%AE%A1%E7%90%86-%E7%AE%A1%E7%90%86%E5%91%98.gif"  />
 
 2、后台系统首页
 
